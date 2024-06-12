@@ -64,11 +64,11 @@ document.addEventListener("DOMContentLoaded", function() {
         let pcChoiceIMG = pc.toLowerCase() +  Math.floor(Math.random()*2);
 
         document.getElementById('userChoiceIMG').src = "/images/" + userChoiceIMG + ".png";
-        document.getElementById('userChoiceIMG').classList.add('animate')
+        document.getElementById('userChoiceIMG').classList.add('fadein')
         document.getElementById('vs').src = "/images/vs.png";
-        document.getElementById('vs').classList.add('animate')
+        document.getElementById('vs').classList.add('fadein')
         document.getElementById('pcChoiceIMG').src = "/images/" + pcChoiceIMG + ".png";
-        document.getElementById('pcChoiceIMG').classList.add('animate')
+        document.getElementById('pcChoiceIMG').classList.add('fadein')
   }
 
   const displayRoundWinner = (roundResult) => {
