@@ -76,6 +76,27 @@ h2 {
     padding: 5%;
     transform: scaleX(-1);
     /*filter: hue-rotate(270deg);*/
+    opacity: 0;
+}
+#vs {
+    opacity: 0;
+}
+
+#userChoiceIMG.animate{
+    animation: fadein 2s forwards;
+}
+
+#vs.animate{
+    animation: fadein 2s 2s forwards;
+}
+
+#pcChoiceIMG.animate{
+    animation: fadein 2s 4s forwards;
+}
+
+@keyframes fadein {
+    from{opacity: 0}
+    to{opacity: 1}
 }
 
 #vs {

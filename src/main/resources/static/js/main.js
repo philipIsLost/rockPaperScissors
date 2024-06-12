@@ -64,8 +64,11 @@ document.addEventListener("DOMContentLoaded", function() {
         let pcChoiceIMG = pc.toLowerCase() +  Math.floor(Math.random()*3);
 
         document.getElementById('userChoiceIMG').src = "/images/" + userChoiceIMG + ".png";
+        document.getElementById('userChoiceIMG').classList.add('animate')
         document.getElementById('vs').src = "/images/vs.jpeg";
+        document.getElementById('vs').classList.add('animate')
         document.getElementById('pcChoiceIMG').src = "/images/" + pcChoiceIMG + ".png";
+        document.getElementById('pcChoiceIMG').classList.add('animate')
   }
 
   const displayRoundWinner = (roundResult) => {
