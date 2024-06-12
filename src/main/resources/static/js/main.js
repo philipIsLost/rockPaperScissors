@@ -28,7 +28,10 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log(data);
         let gameInfo = JSON.parse(data);
         displayChoices(gameInfo[0], gameInfo[1]);
-        displayRoundWinner(gameInfo[2])
+        console.log(gameInfo[3]);
+        console.log(gameInfo[4]);
+        displayCurrentScore(gameInfo[3], gameInfo[4]);
+        displayRoundWinner(gameInfo[2]);
        // document.getElementById("roundResult").innerHTML = gameInfo[2];
       //  document.getElementById("endResult").innerHTML = gameInfo[5];
         return gameInfo;
@@ -61,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let pcChoiceIMG = pc.toLowerCase() +  Math.floor(Math.random()*3);
 
         document.getElementById('userChoiceIMG').src = "/images/" + userChoiceIMG + ".png";
+        document.getElementById('vs').src = "/images/vs.jpeg";
         document.getElementById('pcChoiceIMG').src = "/images/" + pcChoiceIMG + ".png";
   }
 
@@ -68,8 +72,9 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("roundResult").innerHTML = roundResult;
   }
 
-  const displayCurrentScore = (userWinCount, computerWinCount) => {
-
+  const displayCurrentScore = (userWinCount = 0, computerWinCount = 0) => {
+    document.getElementById("userWinCount").innerHTML = "Your Score: " + userWinCount;
+    document.getElementById("pcWinCount").innerHTML = "PC's Score: " + computerWinCount;
   }
 
 });

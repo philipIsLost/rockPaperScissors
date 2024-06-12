@@ -2,6 +2,10 @@ body {
     background-color: black;
 }
 
+p {
+    color: white;
+}
+
 h1{
     font-family: 'Monoton';
     text-align: center;
@@ -66,9 +70,15 @@ h2 {
 
 }
 
-img {
+.choice {
     height: 80%;
     width: 45%;
     padding: 5%;
     transform: scaleX(-1);
+    /*filter: hue-rotate(270deg);*/
+}
+
+#vs {
+    filter: invert(1) hue-rotate(270deg);
+
 }
