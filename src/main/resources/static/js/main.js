@@ -60,12 +60,12 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   const displayChoices = (user, pc) => {
-        let userChoiceIMG = user.toLowerCase() + Math.floor(Math.random()*3);
-        let pcChoiceIMG = pc.toLowerCase() +  Math.floor(Math.random()*3);
+        let userChoiceIMG = user.toLowerCase() + Math.floor(Math.random()*2);
+        let pcChoiceIMG = pc.toLowerCase() +  Math.floor(Math.random()*2);
 
         document.getElementById('userChoiceIMG').src = "/images/" + userChoiceIMG + ".png";
         document.getElementById('userChoiceIMG').classList.add('animate')
-        document.getElementById('vs').src = "/images/vs.jpeg";
+        document.getElementById('vs').src = "/images/vs.png";
         document.getElementById('vs').classList.add('animate')
         document.getElementById('pcChoiceIMG').src = "/images/" + pcChoiceIMG + ".png";
         document.getElementById('pcChoiceIMG').classList.add('animate')
