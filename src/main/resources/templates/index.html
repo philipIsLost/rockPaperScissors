@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rock Paper Sciccors</title>
+    <link rel="shortcut icon" href="/images/Logo.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/reset.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+</head>
+
+<body>
+<h1>Let's play Rock Paper Scissors!</h1>
+<div class="start">
+<button class="start-button" id="startButton">Play</button>
+</div>
+
+<div class="chooseButton">
+    <h2>Please choose:</h2>
+    <button id="stein">🪨</button>
+    <button id="papier">📄</button>
+    <button id="schere">✂️</button>
+</div>
+
+<h2 id="roundResult"></h2>
+
+<div class="displayChoices">
+    <img id="userChoiceIMG" src="">
+    <img id="vs" src="">
+    <img id="pcChoiceIMG" src="">
+</div>
+
+<div class="scoreCounter">
+    <p class="userWinCount"></p>
+    <p class="userWinCount"></p>
+</div>
+
+<h2 id="endResult"></h2>
+
+<button class="playAgainbutton" id="playAgainButton">Wanna Play Again?</button>
+
+<script src="/js/main.js"></script>
+</body>
+</html>

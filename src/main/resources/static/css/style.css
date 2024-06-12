@@ -1,0 +1,74 @@
+body {
+    background-color: black;
+}
+
+h1{
+    font-family: 'Monoton';
+    text-align: center;
+    font-size: 85px;
+    color: #7500ff;
+    margin: 3.125rem 0rem;
+
+}
+
+h2 {
+    font-family: 'Monoton';
+    text-align: center;
+    font-size: 60px;
+    color: #7500ff;
+}
+
+.chooseButton {
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    display: none;
+}
+
+.chooseButton button {
+    background-color: black;
+    font-size: 300px;
+    border: none;
+    cursor: pointer;
+}
+
+.start {
+    display: flex;
+    justify-content: center;
+}
+
+.start-button {
+    font-size: 60px;
+    padding: 10px 20px;
+    color: black;
+    background-color: purple;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    transition: background-color 0.5s ease, opacity 0.6s linear;
+}
+
+.start-button:hover {
+    background-color: darkviolet;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.displayChoices {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+img {
+    height: 80%;
+    width: 45%;
+    padding: 5%;
+    transform: scaleX(-1);
+}
