@@ -22,14 +22,15 @@ h2 {
     color: #7500ff;
 }
 
-.chooseButton {
+.chooseButtons {
     justify-content: center;
     align-items: center;
     justify-content: space-around;
     display: none;
+    margin-top: 12.75rem;
 }
 
-.chooseButton button {
+.chooseButtons button {
     background-color: black;
     font-size: 300px;
     border: none;
@@ -43,7 +44,9 @@ h2 {
 
 .start-button {
     font-size: 60px;
+    font-family: 'Luckiest Guy';
     padding: 10px 20px;
+    padding-top: 25px !important;
     color: black;
     background-color: purple;
     border: none;
@@ -51,10 +54,15 @@ h2 {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
     cursor: pointer;
     transition: background-color 0.5s ease, opacity 0.6s linear;
+    margin-top: 20.25rem;
 }
 
 .start-button:hover {
     background-color: darkviolet;
+}
+
+.choosePrompt {
+    font-family: 'Luckiest Guy' !important;
 }
 
 .hidden {

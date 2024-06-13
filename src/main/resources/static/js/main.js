@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
   btn.addEventListener('transitionend', function(event) {
     if (event.propertyName === 'opacity' && btn.classList.contains('hidden')) {
       btn.style.display = 'none';
-      document.querySelector('.chooseButton').style.display = 'flex';
+      document.querySelector('.chooseButtons').style.display = 'flex';
 
     }
   });
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
   const choiceEvaluation = (gameInfo) => {
-    document.querySelector('.chooseButton').style.display = 'none';
+    document.querySelector('.chooseButtons').style.display = 'none';
   }
 
   const displayChoices = (user, pc,winState) => {
