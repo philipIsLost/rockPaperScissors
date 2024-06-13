@@ -30,10 +30,14 @@ document.addEventListener("DOMContentLoaded", function() {
         displayChoices(gameInfo[0], gameInfo[1],gameInfo[2]);
         console.log(gameInfo[3]);
         console.log(gameInfo[4]);
-        displayCurrentScore(gameInfo[3], gameInfo[4]);
-        displayRoundWinner(gameInfo[2]);
-       // document.getElementById("roundResult").innerHTML = gameInfo[2];
-      //  document.getElementById("endResult").innerHTML = gameInfo[5];
+          displayCurrentScore(gameInfo[3], gameInfo[4]);
+        setTimeout(function() {
+          displayRoundWinner(gameInfo[2]);
+        }, 8200);
+        setTimeout(function() {
+          chooseAgainForNextRound();
+        }, 15000);
+
         return gameInfo;
       })
 
@@ -85,15 +89,24 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById('pcChoiceIMG').src = "/images/" + numbercase +pcChoiceIMG + ".png";
         document.getElementById('pcChoiceIMG').classList.add('fadein');
         document.getElementById('pcWinCount').classList.add('fadein');
+        document.getElementById('userWinCount').classList.add('fadein');
+
   }
 
   const displayRoundWinner = (roundResult) => {
+    document.getElementById('roundResult').classList.add('fadein');
     document.getElementById("roundResult").innerHTML = roundResult;
   }
 
   const displayCurrentScore = (userWinCount = 0, computerWinCount = 0) => {
     document.getElementById("userWinCount").innerHTML = "Your Score: " + userWinCount;
     document.getElementById("pcWinCount").innerHTML = "PC's Score: " + computerWinCount;
+  }
+
+  const chooseAgainForNextRound = () => {
+    document.querySelectorAll('.fadein').forEach(function(el) {
+      el.style.display = 'none';
+    });
   }
 
 });
