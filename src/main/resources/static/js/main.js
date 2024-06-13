@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
       .then(data => {
         console.log(data);
         let gameInfo = JSON.parse(data);
-        displayChoices(gameInfo[0], gameInfo[1]);
+        displayChoices(gameInfo[0], gameInfo[1],gameInfo[2]);
         console.log(gameInfo[3]);
         console.log(gameInfo[4]);
         displayCurrentScore(gameInfo[3], gameInfo[4]);
@@ -59,15 +59,30 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector('.chooseButton').style.display = 'none';
   }
 
-  const displayChoices = (user, pc) => {
+  const displayChoices = (user, pc,winState) => {
         let userChoiceIMG = user.toLowerCase() + Math.floor(Math.random()*2);
         let pcChoiceIMG = pc.toLowerCase() +  Math.floor(Math.random()*2);
+        let numbercase = 0;
+        switch (winState) {
+          case "You Win!":
+            numbercase = 0;
+            break;
+          case "You Loose!":
+            numbercase = 1;
+            break;
+          default:
+            numbercase = Math.floor(Math.random()*2);
+            break;
+        }
 
-        document.getElementById('userChoiceIMG').src = "/images/" + userChoiceIMG + ".png";
+
+        document.getElementById('userChoiceIMG').src = "/images/" + numbercase +userChoiceIMG + ".png";
         document.getElementById('userChoiceIMG').classList.add('fadein')
         document.getElementById('vs').src = "/images/vs.png";
         document.getElementById('vs').classList.add('fadein')
-        document.getElementById('pcChoiceIMG').src = "/images/" + pcChoiceIMG + ".png";
+
+        numbercase = ++numbercase % 2;
+        document.getElementById('pcChoiceIMG').src = "/images/" + numbercase +pcChoiceIMG + ".png";
         document.getElementById('pcChoiceIMG').classList.add('fadein')
   }
 
