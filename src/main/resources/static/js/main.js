@@ -60,8 +60,8 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   const displayChoices = (user, pc,winState) => {
-        let userChoiceIMG = user.toLowerCase() + Math.floor(Math.random()*2);
-        let pcChoiceIMG = pc.toLowerCase() +  Math.floor(Math.random()*2);
+        let userChoiceIMG = user.toLowerCase() + Math.floor(Math.random()*3);
+        let pcChoiceIMG = pc.toLowerCase() +  Math.floor(Math.random()*3);
         let numbercase = 0;
         switch (winState) {
           case "You Win!":
@@ -83,7 +83,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         numbercase = ++numbercase % 2;
         document.getElementById('pcChoiceIMG').src = "/images/" + numbercase +pcChoiceIMG + ".png";
-        document.getElementById('pcChoiceIMG').classList.add('fadein')
+        document.getElementById('pcChoiceIMG').classList.add('fadein');
+        document.getElementById('pcWinCount').classList.add('fadein');
   }
 
   const displayRoundWinner = (roundResult) => {

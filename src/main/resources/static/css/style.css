@@ -76,43 +76,62 @@ h2 {
     display: flex;
     flex-direction: column;
 }
-#userChoiceIMG , #pcChoiceIMG {
-    flex-basis: 100%;
-    height: 500px;
 
+ #pcChoiceIMG {
+    flex-basis: 100%;
+    height: 650px;
+    float: right;
+}
+
+#userChoiceIMG {
+    flex-basis: 100%;
+    height: 650px;
+    float: right;
 }
 
 #pcWinCount, #userWinCount {
-    padding-left: 20%;
+    padding-left: 5%;
 }
 #pcChoiceIMG {
     transform: scaleX(-1);
 }
+
+
 #vs {
     filter: invert(1) hue-rotate(270deg);
-    flex: 30%;
-    width: 50px;
+    width: 200px;
     height: auto;
     opacity: 0;
 }
 
-.choice {
+.pcChoice {
     width: 90%;
-    padding: 20%;
-    /*filter: hue-rotate(270deg);*/
+    padding: 5%;
+    opacity: 0;
+}
+
+.userChoice {
+    width: 90%;
+    padding: 5% 0;
+    padding-left: 5% !important;
+    padding-right: 0% !important;
     opacity: 0;
 }
 
 #userChoiceIMG.fadein{
-    animation: fadein 2s forwards,fightRemovePaddingRight 0s 7s forwards;
+    animation: fadein 2s forwards,fightRemovePaddingRight 1s 7s forwards;
 }
 
 #vs.fadein{
-    animation: fadein 2s 2s forwards, fadeout 1s 6s forwards, fightRemove 0s 7s forwards;
+    animation: fadein 2s 2s forwards, fadeout 1s 6s forwards, fightRemove 1s 7s forwards;
 }
 
 #pcChoiceIMG.fadein{
-    animation: fadein 2s 4s forwards,fightRemovePaddingRight 0s 7s forwards;
+    animation: fadein 2s 4s forwards,fightRemovePaddingRight 1s 7s forwards;
+}
+
+#pcWinCount.fadein {
+    animation: fightRemovePaddingLeft 1s 7s forwards;
 }
 
 @keyframes fadein {
@@ -125,10 +144,16 @@ h2 {
     to{opacity: 0; transform: rotate(5turn)}
 }
 @keyframes fightRemove {
-    from{flex: 30%}
-    to{flex: 0}
+    from{width: 200px}
+    to{width: 0}
 }
+
 @keyframes fightRemovePaddingRight {
-    from{padding-right: initial}
+    from{padding-right: 5%}
     to{padding-right: 0}
+}
+
+@keyframes fightRemovePaddingLeft {
+    from{padding-left: 5%}
+    to{padding-left: 0}
 }
