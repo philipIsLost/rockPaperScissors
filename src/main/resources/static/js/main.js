@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
           displayCurrentScore(gameInfo[3], gameInfo[4]);
         setTimeout(function() {
           displayRoundWinner(gameInfo[2]);
-        }, 8200);
+        }, 10200);
         setTimeout(function() {
           chooseAgainForNextRound();
         }, 15000);
@@ -75,19 +75,39 @@ document.addEventListener("DOMContentLoaded", function() {
             numbercase = 1;
             break;
           default:
-            numbercase = Math.floor(Math.random()*2);
+            numbercase = 2;
             break;
         }
+        let gameCase = numbercase;
 
-
+        if (numbercase === 2){
+          numbercase = Math.floor(Math.random()*2)
+        }
         document.getElementById('userChoiceIMG').src = "/images/" + numbercase +userChoiceIMG + ".png";
-        document.getElementById('userChoiceIMG').classList.add('fadein')
-        document.getElementById('vs').src = "/images/vs.png";
-        document.getElementById('vs').classList.add('fadein')
+        if (gameCase === 1) {
+          document.getElementById('userChoiceIMG').classList.add('fadeinL')
+        }
+        else{
+          document.getElementById('userChoiceIMG').classList.add('fadeinWD')
+        }
+        if (gameCase === 2) {
+          document.getElementById('vs').classList.add('fadeinD')
+          document.getElementById('vs').src = "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png";
+        }
+        else{
+          document.getElementById('vs').classList.add('fadeinWL')
+          document.getElementById('vs').src = "/images/vs.png";
+        }
 
         numbercase = ++numbercase % 2;
         document.getElementById('pcChoiceIMG').src = "/images/" + numbercase +pcChoiceIMG + ".png";
         document.getElementById('pcChoiceIMG').classList.add('fadein');
+        if (gameCase === 0) {
+          document.getElementById('pcChoiceIMG').classList.add('fadeinW')
+        }
+        else{
+          document.getElementById('pcChoiceIMG').classList.add('fadeinLD')
+        }
         document.getElementById('pcWinCount').classList.add('fadein');
         document.getElementById('userWinCount').classList.add('fadein');
 
@@ -104,9 +124,9 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   const chooseAgainForNextRound = () => {
-    document.querySelectorAll('.fadein').forEach(function(el) {
-      el.style.display = 'none';
-    });
+    // document.querySelectorAll('.fadein').forEach(function(el) {
+    //   el.style.display = 'none';
+    // });
   }
 
 });
