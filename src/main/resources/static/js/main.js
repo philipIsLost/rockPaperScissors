@@ -1,18 +1,21 @@
+let playAgainButton = document.getElementById('playAgainButton');
+playAgainButton.style.display = 'none';
+
 document.addEventListener("DOMContentLoaded", function() {
-  let btn = document.getElementById('startButton');
-  btn.addEventListener('click', function() {
-    btn.style.backgroundColor = 'black';
-    btn.style.color = 'white';
-    btn.classList.add('hidden');
+  document.querySelectorAll('#startButton, #playAgainButton').forEach(function(btn) {
+    btn.addEventListener('click', function () {
+      btn.style.backgroundColor = 'black';
+      btn.style.color = 'white';
+      btn.classList.add('hidden');
+    });
+    btn.addEventListener('transitionend', function (event) {
+      if (event.propertyName === 'opacity' && btn.classList.contains('hidden')) {
+        btn.style.display = 'none';
+        document.querySelector('.chooseButtons').style.display = 'flex';
+        document.querySelector('#endResult').style.display = 'none';
+      }
+    });
   });
-  btn.addEventListener('transitionend', function(event) {
-    if (event.propertyName === 'opacity' && btn.classList.contains('hidden')) {
-      btn.style.display = 'none';
-      document.querySelector('.chooseButtons').style.display = 'flex';
-
-    }
-  });
-
   let gameInfo;
 
   const sendRequest = (data) => {
@@ -32,8 +35,8 @@ document.addEventListener("DOMContentLoaded", function() {
           console.log(gameInfo[4]);
           displayCurrentScore(gameInfo[3], gameInfo[4]);
           setTimeout(function () {
-            document.getElementById('vs').style.filter = ''
-            document.getElementById('vs').src = "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png";
+            document.getElementById('vs').style.filter = 'none';
+            document.getElementById('vs').src = "/images/peace.png";
           }, 6000);
           setTimeout(function () {
             displayRoundWinner(gameInfo[2]);
@@ -84,35 +87,37 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         let gameCase = numberCase;
 
-        if (numberCase === 2){
-          numberCase = Math.floor(Math.random()*2)
+        if (gameCase === 2){
+          numberCase = Math.floor(Math.random()*2);
         }
         document.getElementById('userChoiceIMG').src = "/images/" + numberCase +userChoiceIMG + ".png";
         if (gameCase === 1) {
-          document.getElementById('userChoiceIMG').classList.add('fadeinL')
+          document.getElementById('userChoiceIMG').classList.add('fadeinL');
         }
         else{
-          document.getElementById('userChoiceIMG').classList.add('fadeinWD')
+          document.getElementById('userChoiceIMG').classList.add('fadeinWD');
         }
         if (gameCase === 2) {
-          document.getElementById('vs').classList.add('fadeinD')
-          document.getElementById('vs').style.filter = 'invert(1) hue-rotate(270deg)'
+          document.getElementById('vs').classList.add('fadeinD');
+          document.getElementById('vs').style.filter = 'invert(1) hue-rotate(270deg)';
           document.getElementById('vs').src = "/images/vs.png";
         }
         else{
-          document.getElementById('vs').classList.add('fadeinWL')
-          document.getElementById('vs').style.filter = 'invert(1) hue-rotate(270deg)'
+          document.getElementById('vs').classList.add('fadeinWL');
+          document.getElementById('vs').style.filter = 'invert(1) hue-rotate(270deg)';
           document.getElementById('vs').src = "/images/vs.png";
         }
-
+        if (gameCase === 2){
+          numberCase = Math.floor(Math.random()*2);
+        }
         numberCase = ++numberCase % 2;
         document.getElementById('pcChoiceIMG').src = "/images/" + numberCase +pcChoiceIMG + ".png";
         document.getElementById('pcChoiceIMG').classList.add('fadein');
         if (gameCase === 0) {
-          document.getElementById('pcChoiceIMG').classList.add('fadeinW')
+          document.getElementById('pcChoiceIMG').classList.add('fadeinW');
         }
         else{
-          document.getElementById('pcChoiceIMG').classList.add('fadeinLD')
+          document.getElementById('pcChoiceIMG').classList.add('fadeinLD');
         }
         document.getElementById('pcWinCount').classList.add('fadein');
         document.getElementById('userWinCount').classList.add('fadein');
@@ -131,14 +136,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const chooseAgainForNextRound = (endResult) => {
     document.querySelectorAll('.fadein, .fadeinW, .fadeinWD, .fadeinLD, .fadeinD, .fadeinL, .fadeinWL').forEach(function(el) {
-      el.src = ''
+      el.src = '';
       el.classList.remove('fadein', 'fadeinW', 'fadeinWD', 'fadeinLD', 'fadeinD', 'fadeinL','fadeinWL');
     });
     document.getElementById('roundResult').innerHTML = '';
     if(endResult === "false"){
       document.querySelector('.chooseButtons').style.display = 'flex';
-    } else document.getElementById("endResult").innerHTML = endResult;
-
+    } else {
+      document.getElementById("endResult").innerHTML = endResult;
+      document.querySelector('#endResult').style.display = 'block';
+      document.getElementById('endResult').classList.add('animate');
+      document.querySelector('#playAgainButton').style.display = 'block';
+      document.querySelector('#playAgainButton').style.marginLeft = 'auto';
+      document.querySelector('#playAgainButton').style.marginRight = 'auto';
+    }
   }
 
 });

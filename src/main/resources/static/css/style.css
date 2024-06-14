@@ -22,6 +22,14 @@ h2 {
     color: #7500ff;
 }
 
+#endResult {
+    font-family: 'Rubik Broken Fax';
+    text-align: center;
+    font-size: 14rem;
+    color: #7500ff;
+    margin-top: 4.19rem;
+}
+
 .chooseButtons {
     justify-content: center;
     align-items: center;
@@ -111,6 +119,7 @@ h2 {
 
 
 #vs {
+    filter: invert(1) hue-rotate(270deg);
     width: 200px;
     height: auto;
     opacity: 0;
@@ -207,4 +216,34 @@ h2 {
 @keyframes dieRight {
     from{transform:rotate(0.5turn) scaleY(-1); filter: grayscale(0) contrast(100%); opacity: 1}
     to{transform: rotate(1turn) scaleY(-1);filter: grayscale(1) contrast(50%); opacity: 0.5}
+}
+
+.playAgain {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 3rem;
+    font-family: 'Luckiest Guy';
+    padding: 10px 20px;
+    padding-top: 25px !important;
+    color: black;
+    background-color: purple;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    transition: background-color 0.5s ease, opacity 0.6s linear;
+    margin-top: 20.25rem;
+}
+
+.playAgain:hover {
+    background-color: darkviolet;
+}
+
+#endResult.animate {
+    animation:  zoom 2s forwards;
+}
+@keyframes zoom {
+    from{transform: scale3d(0.1, 0.1, 0.1)}
+    to{transform: scale3d(1, 1, 1)}
 }
