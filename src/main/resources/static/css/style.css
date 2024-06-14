@@ -92,6 +92,7 @@ h2 {
 #roundResult {
     font-size: 4.2rem;
     font-family: 'Shojumaru';
+    opacity: 1;
 }
 
 .user, .pc {
@@ -136,34 +137,34 @@ h2 {
 }
 
 #userChoiceIMG.fadeinWD{
-    animation: fadein 1.5s forwards;
+    animation: fadein 1.5s forwards, fadeout 0.3s 11s forwards;
 }
 #userChoiceIMG.fadeinL{
-    animation: fadein 1.5s forwards, dieLeft 1s 7.4s forwards;
+    animation: fadein 1.5s forwards, dieLeft 1s 7.4s forwards, fadeout 0.3s 11s forwards;
 }
 
 #vs.fadeinD{
-    animation: fadein 2s 1.5s forwards, fadeout 1s 5s forwards,fightAddMargin 0.75s 6s forwards,fightRemoveMargin 0.5s 7s forwards, fadein 1s 7.4s forwards;
+    animation: fadein 2s 1.5s forwards, rollout 1s 5s forwards,fightAddMargin 0.75s 6s forwards,fightRemoveMargin 0.5s 7s forwards, fadein 1s 7.4s forwards, fadeout 0.3s 11s forwards;
 }
 #vs.fadeinWL{
-    animation: fadein 2s 1.5s forwards, fadeout 1s 5s forwards,fightAddMargin 0.75s 6s forwards, fightRemove 0.5s 7s forwards,fightFinish 0.5s 7.5s forwards ;
+    animation: fadein 2s 1.5s forwards, rollout 1s 5s forwards,fightAddMargin 0.75s 6s forwards, fightRemove 0.5s 7s forwards,fightFinish 0.5s 7.5s forwards, fadeout 0.3s 11s forwards ;
 }
 
 #pcChoiceIMG.fadeinLD{
-    animation: fadein 2s 3s forwards;
+    animation: fadein 2s 3s forwards, fadeout 0.3s 11s forwards;
 }
 
 #pcChoiceIMG.fadeinW{
-    animation: fadein 2s 3s forwards , dieRight 1s 7.4s forwards;
+    animation: fadein 2s 3s forwards , dieRight 1s 7.4s forwards, fadeout 0.3s 11s forwards;
 }
 
 
 #userWinCount.fadein, #pcWinCount.fadein{
-    animation: fadein 2s 8.4s forwards,fightRemovePaddingLeft 1s 7s forwards;
+    animation: fadein 2s 8.4s forwards,fightRemovePaddingLeft 1s 7s forwards, fadeout 0.3s 11s forwards;
 }
 
 #roundResult.fadein {
-    animation: displayRoundResult 2s forwards;
+    animation: displayRoundResult 2s forwards, fadeout 0.3s 2.6s forwards;
 }
 
 
@@ -173,6 +174,9 @@ h2 {
 }
 
 @keyframes fadeout {
+    to{opacity: 0}
+}
+@keyframes rollout {
     from{opacity: 1; transform: rotate(0turn)}
     to{opacity: 0; transform: rotate(5turn)}
 }

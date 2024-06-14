@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
     btn.addEventListener('transitionend', function (event) {
       if (event.propertyName === 'opacity' && btn.classList.contains('hidden')) {
         btn.style.display = 'none';
+        document.querySelector('.chooseButtons').style.animation = 'fadein 0.4s forwards'
         document.querySelector('.chooseButtons').style.display = 'flex';
         document.querySelector('#endResult').style.display = 'none';
       }
@@ -28,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
     })
       .then(response => response.text())
       .then(data => {
+        setTimeout(function () {
         console.log(data);
         let gameInfo = JSON.parse(data);
           displayChoices(gameInfo[0], gameInfo[1], gameInfo[2]);
@@ -43,9 +45,10 @@ document.addEventListener("DOMContentLoaded", function() {
           }, 8400);
           setTimeout(function () {
             chooseAgainForNextRound(gameInfo[5]);
-          }, 15000);
+          }, 11300);
 
         return gameInfo;
+        }, 400);
       })
 
       .catch((error) => {
@@ -67,7 +70,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
   const choiceEvaluation = (gameInfo) => {
-    document.querySelector('.chooseButtons').style.display = 'none';
+    document.querySelector('.chooseButtons').style.animation = 'fadeout 0.4s forwards'
+    setTimeout(function () {
+      document.querySelector('.chooseButtons').style.display = 'none';
+    }, 400);
   }
 
   const displayChoices = (user, pc,winState) => {
@@ -141,6 +147,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     document.getElementById('roundResult').innerHTML = '';
     if(endResult === "false"){
+      document.querySelector('.chooseButtons').style.animation = 'fadein 0.4s forwards'
       document.querySelector('.chooseButtons').style.display = 'flex';
     } else {
       document.getElementById("endResult").innerHTML = endResult;
