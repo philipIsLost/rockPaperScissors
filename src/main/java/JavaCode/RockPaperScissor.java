@@ -11,8 +11,8 @@ public class RockPaperScissor
 	public static String computerChoice;
 
 	// win-counter variables for player and computer
-	static int computerWinCount = 0;
-	static int userWinCount = 0;
+	public static int computerWinCount = 0;
+	public static int userWinCount = 0;
 
 
 	// checks user input/decision
@@ -65,7 +65,7 @@ public class RockPaperScissor
 		else
 		{
 			computerWinCount++;
-			score.add("You Loose!");
+			score.add("You Lose!");
 
 
 		}

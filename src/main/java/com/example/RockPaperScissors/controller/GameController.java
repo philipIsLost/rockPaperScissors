@@ -9,14 +9,21 @@ import static JavaCode.RockPaperScissor.*;
 
 @RestController
 @RequestMapping("/api")
-public class GameController
-{
+public class GameController {
+
+	private final RockPaperScissor game = new RockPaperScissor();
+
+	@PostMapping("/reset")
+	public String resetGame() {
+		RockPaperScissor.userWinCount = 0;
+		RockPaperScissor.computerWinCount = 0;
+		return "Game has been reset";
+	}
 
 	@PostMapping("/hello")
 	public ArrayList<String> sayHello(@RequestBody String message)
 	{
 		ArrayList<String> gameInfo = new ArrayList<String>();
-		RockPaperScissor game = new RockPaperScissor();
 		String choiceOfUser = game.checkUserChoice(message.replace("\"", ""));
 		gameInfo.add(choiceOfUser);
 		if (!choiceOfUser.equals("Error")){
@@ -27,4 +34,5 @@ public class GameController
 		}
 		return gameInfo;
 	}
+
 }

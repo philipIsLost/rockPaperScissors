@@ -27,16 +27,16 @@ document.addEventListener("DOMContentLoaded", function() {
       .then(data => {
         console.log(data);
         let gameInfo = JSON.parse(data);
-        displayChoices(gameInfo[0], gameInfo[1],gameInfo[2]);
-        console.log(gameInfo[3]);
-        console.log(gameInfo[4]);
+          displayChoices(gameInfo[0], gameInfo[1], gameInfo[2]);
+          console.log(gameInfo[3]);
+          console.log(gameInfo[4]);
           displayCurrentScore(gameInfo[3], gameInfo[4]);
-        setTimeout(function() {
-          displayRoundWinner(gameInfo[2]);
-        }, 10200);
-        setTimeout(function() {
-          chooseAgainForNextRound();
-        }, 15000);
+          setTimeout(function () {
+            displayRoundWinner(gameInfo[2]);
+          }, 10200);
+          setTimeout(function () {
+            chooseAgainForNextRound(gameInfo[5]);
+          }, 15000);
 
         return gameInfo;
       })
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function() {
           case "You Win!":
             numbercase = 0;
             break;
-          case "You Loose!":
+          case "You Lose!":
             numbercase = 1;
             break;
           default:
@@ -123,10 +123,30 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("pcWinCount").innerHTML = "PC's Score: " + computerWinCount;
   }
 
-  const chooseAgainForNextRound = () => {
-    // document.querySelectorAll('.fadein').forEach(function(el) {
-    //   el.style.display = 'none';
-    // });
+  const chooseAgainForNextRound = (endResult) => {
+    document.querySelectorAll('.fadein, .fadeinW, .fadeinWD, .fadeinLD, .fadeinD, .fadeinL').forEach(function(el) {
+      el.src = ''
+      el.classList.remove('fadein', 'fadeinW', 'fadeinWD', 'fadeinLD', 'fadeinD', 'fadeinL');
+    });
+    document.getElementById('roundResult').innerHTML = '';
+    if(endResult === "false"){
+      document.querySelector('.chooseButtons').style.display = 'flex';
+    } else document.getElementById("endResult").innerHTML = endResult;
+
   }
 
+});
+
+document.getElementById('playAgainButton').addEventListener('click', function() {
+  fetch('/api/reset', {
+    method: 'POST',
+  })
+    .then(response => response.text())
+    .then(data => {
+      // Handle the response from the server
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
 });
