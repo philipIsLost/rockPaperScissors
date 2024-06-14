@@ -150,7 +150,7 @@ h2 {
 
 
 #userWinCount.fadein, #pcWinCount.fadein{
-    animation: fadein 2s 10s forwards,fightRemovePaddingLeft 1s 7s forwards;
+    animation: fadein 2s 8.4s forwards,fightRemovePaddingLeft 1s 7s forwards;
 }
 
 #roundResult.fadein {
@@ -165,7 +165,7 @@ h2 {
 
 @keyframes fadeout {
     from{opacity: 1; transform: rotate(0turn)}
-    to{opacity: 0; transform: rotate(20turn)}
+    to{opacity: 0; transform: rotate(5turn)}
 }
 @keyframes fightAddMargin {
     from{margin: 0 0}

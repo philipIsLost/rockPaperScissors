@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
           }, 6000);
           setTimeout(function () {
             displayRoundWinner(gameInfo[2]);
-          }, 10200);
+          }, 8400);
           setTimeout(function () {
             chooseAgainForNextRound(gameInfo[5]);
           }, 15000);
@@ -130,9 +130,9 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   const chooseAgainForNextRound = (endResult) => {
-    document.querySelectorAll('.fadein, .fadeinW, .fadeinWD, .fadeinLD, .fadeinD, .fadeinL').forEach(function(el) {
+    document.querySelectorAll('.fadein, .fadeinW, .fadeinWD, .fadeinLD, .fadeinD, .fadeinL, .fadeinWL').forEach(function(el) {
       el.src = ''
-      el.classList.remove('fadein', 'fadeinW', 'fadeinWD', 'fadeinLD', 'fadeinD', 'fadeinL');
+      el.classList.remove('fadein', 'fadeinW', 'fadeinWD', 'fadeinLD', 'fadeinD', 'fadeinL','fadeinWL');
     });
     document.getElementById('roundResult').innerHTML = '';
     if(endResult === "false"){
