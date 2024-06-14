@@ -32,6 +32,10 @@ document.addEventListener("DOMContentLoaded", function() {
           console.log(gameInfo[4]);
           displayCurrentScore(gameInfo[3], gameInfo[4]);
           setTimeout(function () {
+            document.getElementById('vs').style.filter = ''
+            document.getElementById('vs').src = "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png";
+          }, 6000);
+          setTimeout(function () {
             displayRoundWinner(gameInfo[2]);
           }, 10200);
           setTimeout(function () {
@@ -66,24 +70,24 @@ document.addEventListener("DOMContentLoaded", function() {
   const displayChoices = (user, pc,winState) => {
         let userChoiceIMG = user.toLowerCase() + Math.floor(Math.random()*3);
         let pcChoiceIMG = pc.toLowerCase() +  Math.floor(Math.random()*3);
-        let numbercase = 0;
+        let numberCase = 0;
         switch (winState) {
           case "You Win!":
-            numbercase = 0;
+            numberCase = 0;
             break;
           case "You Lose!":
-            numbercase = 1;
+            numberCase = 1;
             break;
           default:
-            numbercase = 2;
+            numberCase = 2;
             break;
         }
-        let gameCase = numbercase;
+        let gameCase = numberCase;
 
-        if (numbercase === 2){
-          numbercase = Math.floor(Math.random()*2)
+        if (numberCase === 2){
+          numberCase = Math.floor(Math.random()*2)
         }
-        document.getElementById('userChoiceIMG').src = "/images/" + numbercase +userChoiceIMG + ".png";
+        document.getElementById('userChoiceIMG').src = "/images/" + numberCase +userChoiceIMG + ".png";
         if (gameCase === 1) {
           document.getElementById('userChoiceIMG').classList.add('fadeinL')
         }
@@ -92,15 +96,17 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         if (gameCase === 2) {
           document.getElementById('vs').classList.add('fadeinD')
-          document.getElementById('vs').src = "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png";
+          document.getElementById('vs').style.filter = 'invert(1) hue-rotate(270deg)'
+          document.getElementById('vs').src = "/images/vs.png";
         }
         else{
           document.getElementById('vs').classList.add('fadeinWL')
+          document.getElementById('vs').style.filter = 'invert(1) hue-rotate(270deg)'
           document.getElementById('vs').src = "/images/vs.png";
         }
 
-        numbercase = ++numbercase % 2;
-        document.getElementById('pcChoiceIMG').src = "/images/" + numbercase +pcChoiceIMG + ".png";
+        numberCase = ++numberCase % 2;
+        document.getElementById('pcChoiceIMG').src = "/images/" + numberCase +pcChoiceIMG + ".png";
         document.getElementById('pcChoiceIMG').classList.add('fadein');
         if (gameCase === 0) {
           document.getElementById('pcChoiceIMG').classList.add('fadeinW')

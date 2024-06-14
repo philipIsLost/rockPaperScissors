@@ -111,7 +111,6 @@ h2 {
 
 
 #vs {
-    filter: invert(1) hue-rotate(270deg);
     width: 200px;
     height: auto;
     opacity: 0;
@@ -131,14 +130,14 @@ h2 {
     animation: fadein 1.5s forwards;
 }
 #userChoiceIMG.fadeinL{
-    animation: fadein 1.5s forwards, flyaway 1s 7.4s forwards;
+    animation: fadein 1.5s forwards, dieLeft 1s 7.4s forwards;
 }
 
 #vs.fadeinD{
-    animation: fadein 2s 1.5s forwards;
+    animation: fadein 2s 1.5s forwards, fadeout 1s 5s forwards,fightAddMargin 0.75s 6s forwards,fightRemoveMargin 0.5s 7s forwards, fadein 1s 7.4s forwards;
 }
 #vs.fadeinWL{
-    animation: fadein 2s 1.5s forwards, fadeout 1s 5s forwards,fightAddMargin 0.75s 6s forwards, fightRemove 0.5s 7s forwards;
+    animation: fadein 2s 1.5s forwards, fadeout 1s 5s forwards,fightAddMargin 0.75s 6s forwards, fightRemove 0.5s 7s forwards,fightFinish 0.5s 7.5s forwards ;
 }
 
 #pcChoiceIMG.fadeinLD{
@@ -146,7 +145,7 @@ h2 {
 }
 
 #pcChoiceIMG.fadeinW{
-    animation: fadein 2s 3s forwards , flyaway 1s 7.4s forwards;
+    animation: fadein 2s 3s forwards , dieRight 1s 7.4s forwards;
 }
 
 
@@ -172,6 +171,10 @@ h2 {
     from{margin: 0 0}
     to{margin: 0 18%}
 }
+@keyframes fightRemoveMargin {
+    from{margin: 0 18%}
+    to{margin: 0 0}
+}
 
 @keyframes fightRemove {
     from{width: 200px; margin: 0 18%}
@@ -192,7 +195,16 @@ h2 {
     from{height: 0; opacity: 0}
     to{height: 4.5rem; opacity: 1}
 }
-@keyframes flyaway {
-    from{padding-right: 0; transform: rotate(0turn) scale(-1)}
-    to{padding-right: 300%; transform: rotate(5turn) scale(-1)}
+@keyframes fightFinish {
+    from{margin: 0 0}
+    to{margin: 0 5%}
+}
+
+@keyframes dieLeft {
+    from{transform: rotate(0turn); filter: grayscale(0) contrast(100%); opacity: 1}
+    to{transform: rotate(-0.5turn);filter: grayscale(1) contrast(50%); opacity: 0.5}
+}
+@keyframes dieRight {
+    from{transform:rotate(0.5turn) scaleY(-1); filter: grayscale(0) contrast(100%); opacity: 1}
+    to{transform: rotate(1turn) scaleY(-1);filter: grayscale(1) contrast(50%); opacity: 0.5}
 }
