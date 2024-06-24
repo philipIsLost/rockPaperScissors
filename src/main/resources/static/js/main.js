@@ -1,3 +1,7 @@
+document.querySelectorAll('.displayChoices').forEach(function(element) {
+  element.style.display = 'none';
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   const playAgainButton = document.getElementById('playAgainButton');
   playAgainButton.style.display = 'none';
@@ -69,6 +73,9 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   const displayChoices = (user, pc, winState) => {
+    document.querySelectorAll('.displayChoices').forEach(function(element) {
+      element.style.display = '';
+    });
     const userChoiceIMG = user.toLowerCase() + Math.floor(Math.random() * 3);
     const pcChoiceIMG = pc.toLowerCase() + Math.floor(Math.random() * 3);
     const winStates = ["Victory!", "Defeat!", "Draw"];
@@ -124,6 +131,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const chooseAgainForNextRound = (endResult) => {
+    document.querySelectorAll('.displayChoices').forEach(function(element) {
+      element.style.display = 'none';
+    });
     document.querySelectorAll('.fadein, .fadeinW, .fadeinWD, .fadeinLD, .fadeinD, .fadeinL, .fadeinWL').forEach(function (el) {
       el.src = '';
       el.classList.remove('fadein', 'fadeinW', 'fadeinWD', 'fadeinLD', 'fadeinD', 'fadeinL', 'fadeinWL');
@@ -136,6 +146,9 @@ document.addEventListener("DOMContentLoaded", function () {
       chooseButtons.style.animation = 'fadein 0.4s forwards';
       chooseButtons.style.display = 'flex';
     } else {
+      document.querySelectorAll('.displayChoices').forEach(function(element) {
+        element.style.display = 'none';
+      });
       const endResultEl = document.getElementById("endResult");
       endResultEl.innerHTML = endResult;
       endResultEl.style.display = 'block';
