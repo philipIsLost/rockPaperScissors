@@ -246,17 +246,9 @@ h2 {
 }
 
 
-
-/*@keyframes appear {*/
-/*    from{opacity: 0; visibility: hidden;}*/
-/*    to{opacity: 1; visibility: visible}*/
-/*}*/
-
-#playAgainButton.appear {
-    animation: fadein 0.5s 3s forwards;
+#playAgainButton.fadein {
+    animation: fadein 1s 3s forwards;
 }
-
-
 
 
 #endResult.animate {

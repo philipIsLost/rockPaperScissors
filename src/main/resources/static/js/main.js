@@ -153,11 +153,12 @@ document.addEventListener("DOMContentLoaded", function() {
       document.getElementById("endResult").innerHTML = endResult;
       document.querySelector('#endResult').style.display = 'block';
       document.getElementById('endResult').classList.add('animate');
+      document.querySelector('#playAgainButton').style.opacity = '0';
+      document.getElementById('playAgainButton').classList.add('fadein');
       setTimeout(function () {
         document.querySelector('#playAgainButton').style.cssText = "";
         document.querySelector('#playAgainButton').className = "";
       }, 3000);
-      document.getElementById('playAgainButton').classList.add('appear');
       document.querySelector('#playAgainButton').style.display = 'block';
       document.querySelector('#playAgainButton').style.marginLeft = 'auto';
       document.querySelector('#playAgainButton').style.marginRight = 'auto';
