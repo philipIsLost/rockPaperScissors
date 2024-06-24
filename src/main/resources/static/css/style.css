@@ -9,7 +9,7 @@ p {
 h1{
     font-family: 'Monoton';
     text-align: center;
-    font-size: 85px;
+    font-size: 5.312rem;
     color: #7500ff;
     margin: 3.125rem 0rem;
 
@@ -18,7 +18,7 @@ h1{
 h2 {
     font-family: 'Monoton';
     text-align: center;
-    font-size: 60px;
+    font-size: 3.75rem;
     color: #7500ff;
 }
 
@@ -40,7 +40,7 @@ h2 {
 
 .chooseButtons button {
     background-color: black;
-    font-size: 300px;
+    font-size: 18.75rem;
     border: none;
     cursor: pointer;
 }
@@ -51,15 +51,15 @@ h2 {
 }
 
 .start-button {
-    font-size: 60px;
+    font-size: 3.75rem;
     font-family: 'Luckiest Guy';
-    padding: 10px 20px;
-    padding-top: 25px !important;
+    padding: 0.625rem 1.25rem;
+    padding-top: 1.5625rem !important;
     color: black;
     background-color: purple;
     border: none;
-    border-radius: 15px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
     cursor: pointer;
     transition: background-color 0.5s ease, opacity 0.6s linear;
     margin-top: 20.25rem;
@@ -106,7 +106,7 @@ h2 {
 }
 #userChoiceIMG, #pcChoiceIMG {
     flex-basis: 100%;
-    height: 500px;
+    height: 31.25rem;
     float: right;
     margin-top: 3rem;
     margin-bottom: 1rem;
@@ -122,7 +122,7 @@ h2 {
 
 #vs {
     filter: invert(1) hue-rotate(270deg);
-    width: 200px;
+    width: 12.5rem;
     height: auto;
     opacity: 0;
 }
@@ -191,7 +191,7 @@ h2 {
 }
 
 @keyframes fightRemove {
-    from{width: 200px; margin: 0 18%}
+    from{width: 12.5rem; margin: 0 18%}
     to{width: 0; margin: 0 0}
 }
 
@@ -229,13 +229,13 @@ h2 {
     margin-right: auto;
     font-size: 3rem;
     font-family: 'Luckiest Guy';
-    padding: 10px 20px;
-    padding-top: 25px !important;
+    padding: 0.625rem 1.25rem;
+    padding-top: 1.5625rem !important;
     color: black;
     background-color: purple;
     border: none;
-    border-radius: 15px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
     cursor: pointer;
     transition: background-color 0.5s ease, opacity 0.6s linear;
     margin-top: 20.25rem;
