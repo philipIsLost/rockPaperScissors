@@ -20,7 +20,7 @@ public class GameController {
 		return "Game has been reset!";
 	}
 
-	@PostMapping("/hello")
+	@PostMapping("/calculateGameInfo")
 	public ArrayList<String> sayHello(@RequestBody String message)
 	{
 		ArrayList<String> gameInfo = new ArrayList<String>();

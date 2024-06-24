@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
   const sendRequest = (data) => {
-    return fetch('/api/hello', {
+    return fetch('/api/calculateGameInfo', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -58,6 +58,19 @@ document.addEventListener("DOMContentLoaded", function () {
         return ["Error"];
       });
   };
+  document.getElementById('playAgainButton').addEventListener('click', function() {
+    fetch('/api/reset', {
+      method: 'POST',
+    })
+      .then(response => response.text())
+      .then(data => {
+        // Handle the response from the server
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  });
 
   const choiceButtons = ["stein", "papier", "schere"];
   choiceButtons.forEach(choice => {
@@ -106,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
       numberCase = Math.floor(Math.random() * 2);
     }
     numberCase = ++numberCase % 2;
-    const pcChoiceImage = document.getElementById('userChoiceIMG')
+    const pcChoiceImage = document.getElementById('pcChoiceIMG')
     pcChoiceImage.src = "/images/" + numberCase + pcChoiceIMG + ".png";
     pcChoiceImage.classList.add('fadein');
     if (gameCase === 0) {
