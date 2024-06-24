@@ -1,26 +1,26 @@
-let playAgainButton = document.getElementById('playAgainButton');
-playAgainButton.style.display = 'none';
+document.addEventListener("DOMContentLoaded", function () {
+  const playAgainButton = document.getElementById('playAgainButton');
+  playAgainButton.style.display = 'none';
 
-document.addEventListener("DOMContentLoaded", function() {
-  document.querySelectorAll('#startButton, #playAgainButton').forEach(function(btn) {
+  document.querySelectorAll('#startButton, #playAgainButton').forEach(function (btn) {
     btn.addEventListener('click', function () {
       btn.style.backgroundColor = 'black';
       btn.style.color = 'white';
       btn.classList.add('hidden');
     });
+
     btn.addEventListener('transitionend', function (event) {
       if (event.propertyName === 'opacity' && btn.classList.contains('hidden')) {
         btn.style.display = 'none';
-        document.querySelector('.chooseButtons').style.animation = 'fadein 0.4s forwards';
-        document.querySelector('.chooseButtons').style.display = 'flex';
+        const chooseButtons = document.querySelector('.chooseButtons');
+        chooseButtons.style.animation = 'fadein 0.4s forwards';
+        chooseButtons.style.display = 'flex';
         document.querySelector('#endResult').style.display = 'none';
       }
     });
   });
-  let gameInfo;
-
   const sendRequest = (data) => {
-    fetch('/api/hello', {
+    return fetch('/api/hello', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -30,109 +30,92 @@ document.addEventListener("DOMContentLoaded", function() {
       .then(response => response.text())
       .then(data => {
         setTimeout(function () {
-        console.log(data);
-        let gameInfo = JSON.parse(data);
+          console.log(data);
+          const gameInfo = JSON.parse(data);
           displayChoices(gameInfo[0], gameInfo[1], gameInfo[2]);
           console.log(gameInfo[3]);
           console.log(gameInfo[4]);
           displayCurrentScore(gameInfo[3], gameInfo[4]);
-          setTimeout(function () {
-            document.getElementById('vs').style.filter = 'none';
-            document.getElementById('vs').src = "/images/peace.png";
+          setTimeout(() => {
+            const vs = document.getElementById('vs')
+            vs.style.filter = 'none';
+            vs.src = "/images/peace.png";
           }, 6000);
-          setTimeout(function () {
-            displayRoundWinner(gameInfo[2]);
-          }, 8400);
-          setTimeout(function () {
-            chooseAgainForNextRound(gameInfo[5]);
-          }, 11300);
 
-        return gameInfo;
+          setTimeout(() => displayRoundWinner(gameInfo[2]), 8400);
+
+          setTimeout(() => chooseAgainForNextRound(gameInfo[5]), 11300);
+
+          return gameInfo;
         }, 400);
       })
-
-      .catch((error) => {
+      .catch(error => {
         console.error('Error:', error);
         return ["Error"];
       });
   };
 
-  document.getElementById("stein").addEventListener("click", function() {
-    choiceEvaluation(sendRequest("Stein"));
+  const choiceButtons = ["stein", "papier", "schere"];
+  choiceButtons.forEach(choice => {
+    document.getElementById(choice).addEventListener("click", function () {
+      choiceEvaluation(sendRequest(choice));
+    });
   });
 
-  document.getElementById("papier").addEventListener("click", function() {
-    choiceEvaluation(sendRequest("Papier"));
-  });
-  document.getElementById("schere").addEventListener("click", function() {
-    choiceEvaluation(sendRequest("Schere"));
-  });
+  const choiceEvaluation = () => {
+    const chooseButtons = document.querySelector('.chooseButtons');
+    chooseButtons.style.animation = 'fadeout 0.4s forwards';
+    setTimeout(() => chooseButtons.style.display = 'none', 400);
+  };
 
+  const displayChoices = (user, pc, winState) => {
+    const userChoiceIMG = user.toLowerCase() + Math.floor(Math.random() * 3);
+    const pcChoiceIMG = pc.toLowerCase() + Math.floor(Math.random() * 3);
+    const winStates = ["Victory!", "Defeat!", "Draw"];
+    let numberCase = winStates.indexOf(winState);
+    let gameCase = numberCase
 
-  const choiceEvaluation = (gameInfo) => {
-    document.querySelector('.chooseButtons').style.animation = 'fadeout 0.4s forwards'
-    setTimeout(function () {
-      document.querySelector('.chooseButtons').style.display = 'none';
-    }, 400);
-  }
-
-  const displayChoices = (user, pc,winState) => {
-        let userChoiceIMG = user.toLowerCase() + Math.floor(Math.random()*3);
-        let pcChoiceIMG = pc.toLowerCase() +  Math.floor(Math.random()*3);
-        let numberCase = 0;
-        switch (winState) {
-          case "Victory!":
-            numberCase = 0;
-            break;
-          case "Defeat!":
-            numberCase = 1;
-            break;
-          default:
-            numberCase = 2;
-            break;
-        }
-        let gameCase = numberCase;
-
-        if (gameCase === 2){
-          numberCase = Math.floor(Math.random()*2);
-        }
-        document.getElementById('userChoiceIMG').src = "/images/" + numberCase +userChoiceIMG + ".png";
-        if (gameCase === 1) {
-          document.getElementById('userChoiceIMG').classList.add('fadeinL');
-        }
-        else{
-          document.getElementById('userChoiceIMG').classList.add('fadeinWD');
-        }
-        if (gameCase === 2) {
-          document.getElementById('vs').classList.add('fadeinD');
-          document.getElementById('vs').style.filter = 'invert(1) hue-rotate(270deg)';
-          document.getElementById('vs').src = "/images/vs.png";
-        }
-        else{
-          document.getElementById('vs').classList.add('fadeinWL');
-          document.getElementById('vs').style.filter = 'invert(1) hue-rotate(270deg)';
-          document.getElementById('vs').src = "/images/vs.png";
-        }
-        if (gameCase === 2){
-          numberCase = Math.floor(Math.random()*2);
-        }
-        numberCase = ++numberCase % 2;
-        document.getElementById('pcChoiceIMG').src = "/images/" + numberCase +pcChoiceIMG + ".png";
-        document.getElementById('pcChoiceIMG').classList.add('fadein');
-        if (gameCase === 0) {
-          document.getElementById('pcChoiceIMG').classList.add('fadeinW');
-        }
-        else{
-          document.getElementById('pcChoiceIMG').classList.add('fadeinLD');
-        }
-        document.getElementById('pcWinCount').classList.add('fadein');
-        document.getElementById('userWinCount').classList.add('fadein');
+    if (gameCase === 2) {
+      numberCase = Math.floor(Math.random() * 2);
+    }
+    const userChoiceImage = document.getElementById('userChoiceIMG')
+    userChoiceImage.src = "/images/" + numberCase + userChoiceIMG + ".png";
+    if (gameCase === 1) {
+      userChoiceImage.classList.add('fadeinL');
+    } else {
+      userChoiceImage.classList.add('fadeinWD');
+    }
+    const vs = document.getElementById('vs')
+    if (gameCase === 2) {
+      vs.classList.add('fadeinD');
+      vs.style.filter = 'invert(1) hue-rotate(270deg)';
+      vs.src = "/images/vs.png";
+    } else {
+      vs.classList.add('fadeinWL');
+      vs.style.filter = 'invert(1) hue-rotate(270deg)';
+      vs.src = "/images/vs.png";
+    }
+    if (gameCase === 2) {
+      numberCase = Math.floor(Math.random() * 2);
+    }
+    numberCase = ++numberCase % 2;
+    const pcChoiceImage = document.getElementById('userChoiceIMG')
+    pcChoiceImage.src = "/images/" + numberCase + pcChoiceIMG + ".png";
+    pcChoiceImage.classList.add('fadein');
+    if (gameCase === 0) {
+      pcChoiceImage.classList.add('fadeinW');
+    } else {
+      pcChoiceImage.classList.add('fadeinLD');
+    }
+    document.getElementById('pcWinCount').classList.add('fadein');
+    document.getElementById('userWinCount').classList.add('fadein');
 
   }
 
   const displayRoundWinner = (roundResult) => {
-    document.getElementById('roundResult').classList.add('fadein');
-    document.getElementById("roundResult").innerHTML = roundResult;
+    const roundResultElement = document.getElementById('roundResult')
+    roundResultElement.classList.add('fadein');
+    roundResultElement.innerHTML = roundResult;
   }
 
   const displayCurrentScore = (userWinCount = 0, computerWinCount = 0) => {
@@ -141,31 +124,37 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   const chooseAgainForNextRound = (endResult) => {
-    document.querySelectorAll('.fadein, .fadeinW, .fadeinWD, .fadeinLD, .fadeinD, .fadeinL, .fadeinWL').forEach(function(el) {
+    document.querySelectorAll('.fadein, .fadeinW, .fadeinWD, .fadeinLD, .fadeinD, .fadeinL, .fadeinWL').forEach(function (el) {
       el.src = '';
-      el.classList.remove('fadein', 'fadeinW', 'fadeinWD', 'fadeinLD', 'fadeinD', 'fadeinL','fadeinWL');
+      el.classList.remove('fadein', 'fadeinW', 'fadeinWD', 'fadeinLD', 'fadeinD', 'fadeinL', 'fadeinWL');
     });
+
     document.getElementById('roundResult').innerHTML = '';
-    if(endResult === "false"){
-      document.querySelector('.chooseButtons').style.animation = 'fadein 0.4s forwards'
-      document.querySelector('.chooseButtons').style.display = 'flex';
+
+    if (endResult === "false") {
+      const chooseButtons = document.querySelector('.chooseButtons');
+      chooseButtons.style.animation = 'fadein 0.4s forwards';
+      chooseButtons.style.display = 'flex';
     } else {
-      document.getElementById("endResult").innerHTML = endResult;
-      document.querySelector('#endResult').style.display = 'block';
-      document.getElementById('endResult').classList.add('animate');
-      document.querySelector('#playAgainButton').style.opacity = '0';
-      document.getElementById('playAgainButton').classList.add('fadein');
-      setTimeout(function () {
-        document.querySelector('#playAgainButton').style.cssText = "";
-        document.querySelector('#playAgainButton').className = "";
+      const endResultEl = document.getElementById("endResult");
+      endResultEl.innerHTML = endResult;
+      endResultEl.style.display = 'block';
+      endResultEl.classList.add('animate');
+
+      playAgainButton.style.opacity = '0';
+      playAgainButton.classList.add('fadein');
+
+      setTimeout(() => {
+        playAgainButton.style.cssText = "";
+        playAgainButton.className = "";
       }, 3000);
-      document.querySelector('#playAgainButton').style.display = 'block';
-      document.querySelector('#playAgainButton').style.marginLeft = 'auto';
-      document.querySelector('#playAgainButton').style.marginRight = 'auto';
+
+      playAgainButton.style.display = 'block';
+      playAgainButton.style.marginLeft = 'auto';
+      playAgainButton.style.marginRight = 'auto';
     }
   }
 });
-
 
 
 
