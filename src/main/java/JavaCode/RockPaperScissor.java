@@ -59,13 +59,13 @@ public class RockPaperScissor
 				choiceOfUser.equalsIgnoreCase("Papier") && ComputerChoice.equals("Stein"))
 		{
 			userWinCount++;
-			score.add("You Win!");
+			score.add("Victory!");
 		}
 		// check win (computer)
 		else
 		{
 			computerWinCount++;
-			score.add("You Lose!");
+			score.add("Defeat!");
 
 
 		}

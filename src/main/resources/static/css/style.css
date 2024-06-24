@@ -26,7 +26,7 @@ h2 {
     font-family: 'Rubik Broken Fax';
     text-align: center;
     font-size: 14rem;
-    color: #7500ff;
+    color: #390481;
     margin-top: 4.19rem;
 }
 
@@ -71,6 +71,7 @@ h2 {
 
 .choosePrompt {
     font-family: 'Luckiest Guy' !important;
+    color: #8c0eff;
 }
 
 .hidden {
@@ -222,7 +223,7 @@ h2 {
     to{transform: rotate(1turn) scaleY(-1);filter: grayscale(1) contrast(50%); opacity: 0.5}
 }
 
-.playAgain {
+#playAgainButton {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -240,9 +241,23 @@ h2 {
     margin-top: 20.25rem;
 }
 
-.playAgain:hover {
+#playAgainButton:hover {
     background-color: darkviolet;
 }
+
+
+
+/*@keyframes appear {*/
+/*    from{opacity: 0; visibility: hidden;}*/
+/*    to{opacity: 1; visibility: visible}*/
+/*}*/
+
+#playAgainButton.appear {
+    animation: fadein 0.5s 3s forwards;
+}
+
+
+
 
 #endResult.animate {
     animation:  zoom 2s forwards;
@@ -251,3 +266,4 @@ h2 {
     from{transform: scale3d(0.1, 0.1, 0.1)}
     to{transform: scale3d(1, 1, 1)}
 }
+

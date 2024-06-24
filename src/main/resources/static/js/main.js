@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
     btn.addEventListener('transitionend', function (event) {
       if (event.propertyName === 'opacity' && btn.classList.contains('hidden')) {
         btn.style.display = 'none';
-        document.querySelector('.chooseButtons').style.animation = 'fadein 0.4s forwards'
+        document.querySelector('.chooseButtons').style.animation = 'fadein 0.4s forwards';
         document.querySelector('.chooseButtons').style.display = 'flex';
         document.querySelector('#endResult').style.display = 'none';
       }
@@ -81,10 +81,10 @@ document.addEventListener("DOMContentLoaded", function() {
         let pcChoiceIMG = pc.toLowerCase() +  Math.floor(Math.random()*3);
         let numberCase = 0;
         switch (winState) {
-          case "You Win!":
+          case "Victory!":
             numberCase = 0;
             break;
-          case "You Lose!":
+          case "Defeat!":
             numberCase = 1;
             break;
           default:
@@ -153,24 +153,18 @@ document.addEventListener("DOMContentLoaded", function() {
       document.getElementById("endResult").innerHTML = endResult;
       document.querySelector('#endResult').style.display = 'block';
       document.getElementById('endResult').classList.add('animate');
+      setTimeout(function () {
+        document.querySelector('#playAgainButton').style.cssText = "";
+        document.querySelector('#playAgainButton').className = "";
+      }, 3000);
+      document.getElementById('playAgainButton').classList.add('appear');
       document.querySelector('#playAgainButton').style.display = 'block';
       document.querySelector('#playAgainButton').style.marginLeft = 'auto';
       document.querySelector('#playAgainButton').style.marginRight = 'auto';
     }
   }
-
 });
 
-document.getElementById('playAgainButton').addEventListener('click', function() {
-  fetch('/api/reset', {
-    method: 'POST',
-  })
-    .then(response => response.text())
-    .then(data => {
-      // Handle the response from the server
-      console.log(data);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
-});
+
+
+

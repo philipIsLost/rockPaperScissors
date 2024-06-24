@@ -17,7 +17,7 @@ public class GameController {
 	public String resetGame() {
 		RockPaperScissor.userWinCount = 0;
 		RockPaperScissor.computerWinCount = 0;
-		return "Game has been reset";
+		return "Game has been reset!";
 	}
 
 	@PostMapping("/hello")
