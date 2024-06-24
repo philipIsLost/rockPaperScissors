@@ -6,20 +6,19 @@ p {
     color: white;
 }
 
-h1{
+h1, h2 {
     font-family: 'Monoton';
     text-align: center;
-    font-size: 5.312rem;
     color: #7500ff;
-    margin: 3.125rem 0rem;
+}
 
+h1 {
+    font-size: 5.312rem;
+    margin: 3.125rem 0;
 }
 
 h2 {
-    font-family: 'Monoton';
-    text-align: center;
     font-size: 3.75rem;
-    color: #7500ff;
 }
 
 #endResult {
@@ -31,10 +30,9 @@ h2 {
 }
 
 .chooseButtons {
-    justify-content: center;
-    align-items: center;
-    justify-content: space-around;
     display: none;
+    justify-content: space-around;
+    align-items: center;
     margin-top: 12.75rem;
 }
 
@@ -50,11 +48,10 @@ h2 {
     justify-content: center;
 }
 
-.start-button {
+.start-button, #playAgainButton {
     font-size: 3.75rem;
     font-family: 'Luckiest Guy';
     padding: 0.625rem 1.25rem;
-    padding-top: 1.5625rem !important;
     color: black;
     background-color: purple;
     border: none;
@@ -65,7 +62,7 @@ h2 {
     margin-top: 20.25rem;
 }
 
-.start-button:hover {
+.start-button:hover, #playAgainButton:hover {
     background-color: darkviolet;
 }
 
@@ -81,13 +78,10 @@ h2 {
 
 .displayChoices {
     width: 100%;
-    height: auto;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-
 }
 
 #roundResult {
@@ -101,15 +95,15 @@ h2 {
     flex-direction: column;
 }
 
- #pcChoiceIMG {
+#pcChoiceIMG {
     transform: scaleX(-1);
 }
+
 #userChoiceIMG, #pcChoiceIMG {
     flex-basis: 100%;
     height: 31.25rem;
     float: right;
-    margin-top: 3rem;
-    margin-bottom: 1rem;
+    margin: 3rem 0 1rem 0;
 }
 
 #pcWinCount, #userWinCount {
@@ -119,7 +113,6 @@ h2 {
     opacity: 0;
 }
 
-
 #vs {
     filter: invert(1) hue-rotate(270deg);
     width: 12.5rem;
@@ -127,100 +120,100 @@ h2 {
     opacity: 0;
 }
 
-.pcChoice {
+.pcChoice, .userChoice {
     width: 100%;
     opacity: 0;
 }
 
-.userChoice {
-    width: 100%;
-    opacity: 0;
-}
-
-#userChoiceIMG.fadeinWD{
+#userChoiceIMG.fadeinWD {
     animation: fadein 1.5s forwards, fadeout 0.3s 11s forwards;
 }
-#userChoiceIMG.fadeinL{
+
+#userChoiceIMG.fadeinL {
     animation: fadein 1.5s forwards, dieLeft 1s 7.4s forwards, fadeout 0.3s 11s forwards;
 }
 
-#vs.fadeinD{
-    animation: fadein 2s 1.5s forwards, rollout 1s 5s forwards,fightAddMargin 0.75s 6s forwards,fightRemoveMargin 0.5s 7s forwards, fadein 1s 7.4s forwards, fadeout 0.3s 11s forwards;
-}
-#vs.fadeinWL{
-    animation: fadein 2s 1.5s forwards, rollout 1s 5s forwards,fightAddMargin 0.75s 6s forwards, fightRemove 0.5s 7s forwards,fightFinish 0.5s 7.5s forwards, fadeout 0.3s 11s forwards ;
+#vs.fadeinD {
+    animation: fadein 2s 1.5s forwards, rollout 1s 5s forwards, fightAddMargin 0.75s 6s forwards, fightRemoveMargin 0.5s 7s forwards, fadein 1s 7.4s forwards, fadeout 0.3s 11s forwards;
 }
 
-#pcChoiceIMG.fadeinLD{
+#vs.fadeinWL {
+    animation: fadein 2s 1.5s forwards, rollout 1s 5s forwards, fightAddMargin 0.75s 6s forwards, fightRemove 0.5s 7s forwards, fightFinish 0.5s 7.5s forwards, fadeout 0.3s 11s forwards;
+}
+
+#pcChoiceIMG.fadeinLD {
     animation: fadein 2s 3s forwards, fadeout 0.3s 11s forwards;
 }
 
-#pcChoiceIMG.fadeinW{
-    animation: fadein 2s 3s forwards , dieRight 1s 7.4s forwards, fadeout 0.3s 11s forwards;
+#pcChoiceIMG.fadeinW {
+    animation: fadein 2s 3s forwards, dieRight 1s 7.4s forwards, fadeout 0.3s 11s forwards;
 }
 
-
-#userWinCount.fadein, #pcWinCount.fadein{
-    animation: fadein 2s 8.4s forwards,fightRemovePaddingLeft 1s 7s forwards, fadeout 0.3s 11s forwards;
+#userWinCount.fadein, #pcWinCount.fadein {
+    animation: fadein 2s 8.4s forwards, fightRemovePaddingLeft 1s 7s forwards, fadeout 0.3s 11s forwards;
 }
 
 #roundResult.fadein {
     animation: displayRoundResult 2s forwards, fadeout 0.3s 2.6s forwards;
 }
 
-
 @keyframes fadein {
-    from{opacity: 0}
-    to{opacity: 1}
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 @keyframes fadeout {
-    to{opacity: 0}
+    to { opacity: 0; }
 }
+
 @keyframes rollout {
-    from{opacity: 1; transform: rotate(0turn)}
-    to{opacity: 0; transform: rotate(5turn)}
+    from { opacity: 1; transform: rotate(0turn); }
+    to { opacity: 0; transform: rotate(5turn); }
 }
+
 @keyframes fightAddMargin {
-    from{margin: 0 0}
-    to{margin: 0 18%}
+    from { margin: 0; }
+    to { margin: 0 18%; }
 }
+
 @keyframes fightRemoveMargin {
-    from{margin: 0 18%}
-    to{margin: 0 0}
+    from { margin: 0 18%; }
+    to { margin: 0; }
 }
 
 @keyframes fightRemove {
-    from{width: 12.5rem; margin: 0 18%}
-    to{width: 0; margin: 0 0}
+    from { width: 12.5rem; margin: 0 18%; }
+    to { width: 0; margin: 0; }
 }
 
 @keyframes fightRemovePaddingRight {
-    from{padding-right: 30%}
-    to{padding-right: 0}
+    from { padding-right: 30%; }
+    to { padding-right: 0; }
 }
 
 @keyframes fightRemovePaddingLeft {
-    from{padding-left: 5%}
-    to{padding-left: 0}
+    from { padding-left: 5%; }
+    to { padding-left: 0; }
 }
 
 @keyframes displayRoundResult {
-    from{height: 0; opacity: 0}
-    to{height: 4.5rem; opacity: 1}
+    from { height: 0; opacity: 0; }
+    to { height: 4.5rem; opacity: 1; }
 }
+
 @keyframes fightFinish {
-    from{margin: 0 0}
-    to{margin: 0 5%}
+    from { margin: 0; }
+    to { margin: 0 5%; }
 }
 
 @keyframes dieLeft {
-    from{transform: rotate(0turn); filter: grayscale(0) contrast(100%); opacity: 1}
-    to{transform: rotate(-0.5turn);filter: grayscale(1) contrast(50%); opacity: 0.5}
+    from { transform: rotate(0turn); filter: grayscale(0) contrast(100%); opacity: 1; }
+    to { transform: rotate(-0.5turn); filter: grayscale(1) contrast(50%); opacity: 0.5; }
 }
+
 @keyframes dieRight {
-    from{transform:rotate(0.5turn) scaleY(-1); filter: grayscale(0) contrast(100%); opacity: 1}
-    to{transform: rotate(1turn) scaleY(-1);filter: grayscale(1) contrast(50%); opacity: 0.5}
+    from { transform: rotate(0.5turn) scaleY(-1); filter: grayscale(0) contrast(100%); opacity: 1; }
+    to { transform: rotate(1turn) scaleY(-1); filter: grayscale(1) contrast(50%); opacity: 0.5; }
 }
 
 #playAgainButton {
@@ -230,7 +223,6 @@ h2 {
     font-size: 3rem;
     font-family: 'Luckiest Guy';
     padding: 0.625rem 1.25rem;
-    padding-top: 1.5625rem !important;
     color: black;
     background-color: purple;
     border: none;
@@ -241,21 +233,15 @@ h2 {
     margin-top: 10rem;
 }
 
-#playAgainButton:hover {
-    background-color: darkviolet;
-}
-
-
 #playAgainButton.fadein {
     animation: fadein 1s 3s forwards;
 }
 
-
 #endResult.animate {
-    animation:  zoom 2s forwards;
-}
-@keyframes zoom {
-    from{transform: scale3d(0.1, 0.1, 0.1)}
-    to{transform: scale3d(1, 1, 1)}
+    animation: zoom 2s forwards;
 }
 
+@keyframes zoom {
+    from { transform: scale3d(0.1, 0.1, 0.1); }
+    to { transform: scale3d(1, 1, 1); }
+}
