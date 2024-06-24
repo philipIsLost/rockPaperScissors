@@ -238,7 +238,7 @@ h2 {
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
     cursor: pointer;
     transition: background-color 0.5s ease, opacity 0.6s linear;
-    margin-top: 20.25rem;
+    margin-top: 10rem;
 }
 
 #playAgainButton:hover {
