@@ -1,15 +1,3 @@
-@font-face {
-    font-family: WynnRegular;
-    src: url(https://roguim.github.io/Wynncraft/Wynnic-Regular.otf);
-}
-/*@font-face {
-    font-family: WynnPixel;
-    src: url(Wynnic-Pixel.otf);
-}*/
-@font-face {
-    font-family: WynnNums;
-    src: url(https://roguim.github.io/Wynncraft/WynnicNumerals-Regular.otf);
-}
 body {
     background-color: black;
 }
@@ -19,7 +7,7 @@ p {
 }
 
 h1, h2 {
-    font-family: WynnRegular;
+    font-family: 'Monoton';
     text-align: center;
     color: #7500ff;
 }
@@ -34,7 +22,7 @@ h2 {
 }
 
 #endResult {
-    font-family: WynnRegular;
+    font-family: 'Rubik Broken Fax';
     text-align: center;
     font-size: 14rem;
     color: #390481;
